@@ -3,8 +3,9 @@
 <ul>
   <% @notes.each do |note| %>
     <li>
-      <a href="/notes/<%= note.id %>">
-      <%= note.title %>
+      <%= link_to note.title, note %>
     </li>
   <% end %>
 </ul>
+
+<%= link_to "New Note", new_note_path %>
