@@ -1,14 +1,15 @@
 <h1>Notes</h1>
 
 <%= form_tag notes_path, method: :get do%>
-  <%= select_tag :sort_by, options_for_select([['Title (A-Z)', 'title_asc'], ['Title (Z-A)', 'title_desc']], params[:sort_by]), prompt: 'All' %>
-  <%= submit_tag "Sort" %>
+  <%= select_tag :sort_by, options_for_select([['Date (Most Recent)', 'recent'], ['Date (Most Oldest)', 'oldest'],['Title (A-Z)', 'title_asc'], ['Title (Z-A)', 'title_desc']], params[:sort_by] || 'recent'), onchange: 'this.form.submit()' %>
+  <%#= submit_tag "Sort" %>
 <% end %>
 
 <ul>
   <% @notes.each do |note| %>
     <li>
       <%= link_to note.title, note %>
+      <%= note.created_at %>
     </li>
   <% end %>
 </ul>
