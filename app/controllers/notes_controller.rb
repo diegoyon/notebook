@@ -17,13 +17,13 @@ class NotesController < ApplicationController
     if @note.save
       redirect_to @note
     else
-      render :new, status: :unprocessable_entity 
+      render :new, status: :unprocessable_entity
     end
   end
 
   private
-    def note_params
-      params.require(:note).permit(:title, :body)
-    end
 
+  def note_params
+    params.require(:note).permit(:title, :body)
+  end
 end
