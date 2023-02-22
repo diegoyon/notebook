@@ -1,6 +1,12 @@
 class NotesController < ApplicationController
   def index
     @notes = Note.all
+    case params[:sort_by]
+    when 'title_asc'
+      @notes = @notes.order(title: :asc)
+    when 'title_desc'
+      @notes = @notes.order(title: :desc)
+    end
   end
 
   def show
