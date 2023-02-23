@@ -18,9 +18,13 @@ class NotesController < ApplicationController
       @notes = @notes.order(created_at: :desc)
     end
 
-    return unless params[:topic_id].present?
+    if params[:topic_id].present?
+      @notes = @notes.where(topic_id: params[:topic_id])
+    end
 
-    @notes = @notes.where(topic_id: params[:topic_id])
+    if params[:query].present?
+      @notes = @notes.where("lower(title) LIKE :query OR lower(body) LIKE :query", query: "%#{params[:query].downcase}%")
+    end
   end
 
   def show; end
