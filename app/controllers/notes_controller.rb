@@ -1,11 +1,29 @@
 class NotesController < ApplicationController
+  before_action :set_note, only: %i[show edit update destroy]
+
   def index
     @notes = Note.all
+    if params[:sort_by].present?
+      case params[:sort_by]
+      when 'recent'
+        @notes = @notes.order(created_at: :desc)
+      when 'oldest'
+        @notes = @notes.order(created_at: :asc)
+      when 'title_asc'
+        @notes = @notes.order(title: :asc)
+      when 'title_desc'
+        @notes = @notes.order(title: :desc)
+      end
+    else
+      @notes = @notes.order(created_at: :desc)
+    end
+
+    return unless params[:topic_id].present?
+
+    @notes = @notes.where(topic_id: params[:topic_id])
   end
 
-  def show
-    @note = Note.find(params[:id])
-  end
+  def show; end
 
   def new
     @note = Note.new
@@ -21,13 +39,9 @@ class NotesController < ApplicationController
     end
   end
 
-  def edit
-    @note = Note.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @note = Note.find(params[:id])
-
     if @note.update(note_params)
       redirect_to @note
     else
@@ -36,7 +50,6 @@ class NotesController < ApplicationController
   end
 
   def destroy
-    @note = Note.find(params[:id])
     @note.destroy
 
     redirect_to root_path, status: :see_other
@@ -44,7 +57,11 @@ class NotesController < ApplicationController
 
   private
 
+  def set_note
+    @note = Note.find(params[:id])
+  end
+
   def note_params
-    params.require(:note).permit(:title, :body)
+    params.require(:note).permit(:title, :body, :topic_id)
   end
 end
