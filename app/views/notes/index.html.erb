@@ -11,6 +11,7 @@
       <li>
         <%= link_to note.title, note %>
         <%= note.created_at %>
+        <%= Topic.find(note.topic_id).name %>
       </li>
     <% end %>
   </ul>

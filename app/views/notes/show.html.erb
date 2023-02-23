@@ -2,6 +2,8 @@
 
 <p><%= @note.body %></p>
 
+<p><%= Topic.find(@note.topic_id).name %></p>
+
 <p><%= @note.created_at %></p>
 
 <%= link_to "Edit Note", edit_note_path(@note) %>
