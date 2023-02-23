@@ -3,24 +3,9 @@ class NotesController < ApplicationController
 
   def index
     @notes = Note.all
-    if params[:sort_by].present?
-      case params[:sort_by]
-      when 'recent'
-        @notes = @notes.order(created_at: :desc)
-      when 'oldest'
-        @notes = @notes.order(created_at: :asc)
-      when 'title_asc'
-        @notes = @notes.order(title: :asc)
-      when 'title_desc'
-        @notes = @notes.order(title: :desc)
-      end
-    else
-      @notes = @notes.order(created_at: :desc)
-    end
-
-    return unless params[:topic_id].present?
-
-    @notes = @notes.where(topic_id: params[:topic_id])
+    sort_notes
+    filter_notes
+    search_notes
   end
 
   def show; end
@@ -63,5 +48,35 @@ class NotesController < ApplicationController
 
   def note_params
     params.require(:note).permit(:title, :body, :topic_id)
+  end
+
+  def sort_notes
+    if params[:sort_by].present?
+      case params[:sort_by]
+      when 'recent'
+        @notes = @notes.order(created_at: :desc)
+      when 'oldest'
+        @notes = @notes.order(created_at: :asc)
+      when 'title_asc'
+        @notes = @notes.order(title: :asc)
+      when 'title_desc'
+        @notes = @notes.order(title: :desc)
+      end
+    else
+      @notes = @notes.order(created_at: :desc)
+    end
+  end
+
+  def filter_notes
+    return unless params[:topic_id].present?
+
+    @notes = @notes.where(topic_id: params[:topic_id])
+  end
+
+  def search_notes
+    return unless params[:query].present?
+
+    @notes = @notes.where('lower(title) LIKE :query OR lower(body) LIKE :query',
+                          query: "%#{params[:query].downcase}%")
   end
 end

@@ -1,8 +1,9 @@
 <h1>Notes</h1>
 
 <%= form_with url: "/notes", method: :get, data: { controller: "actions", turbo_frame: 'notes-frame' } do |form| %>
+  <%= form.text_field :query, data: { action: 'input->actions#submit' } %>
   <%= select_tag :sort_by, options_for_select([['Date (Most Recent)', 'recent'], ['Date (Most Oldest)', 'oldest'],['Title (A-Z)', 'title_asc'], ['Title (Z-A)', 'title_desc']], params[:sort_by] || 'recent'), data: { action: 'change->actions#submit' } %>
-  <%= form.collection_select(:topic_id, Topic.all, :id, :name_with_icon, {prompt: "All Topics"}, onchange: 'this.form.requestSubmit()' ) %>
+  <%= form.collection_select(:topic_id, Topic.all, :id, :name_with_icon, {prompt: "All Topics"}, data: { action: 'input->actions#submit' } ) %>
 <% end %>
 
 
@@ -10,9 +11,10 @@
   <ul>
     <% @notes.each do |note| %>
       <li>
-        <%= link_to note.title, note %>
-        <%= note.created_at %>
-        <%= Topic.find(note.topic_id).name %>
+        <p><%= link_to note.title, note %></p>
+        <p><%= note.body %></p>
+        <p><%= note.created_at %></p>
+        <p><%= Topic.find(note.topic_id).name %></p>
       </li>
     <% end %>
   </ul>
