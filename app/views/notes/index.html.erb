@@ -1,17 +1,19 @@
 <h1>Notes</h1>
 
-<%= form_tag notes_path, method: :get do%>
-  <%= select_tag :sort_by, options_for_select([['Date (Most Recent)', 'recent'], ['Date (Most Oldest)', 'oldest'],['Title (A-Z)', 'title_asc'], ['Title (Z-A)', 'title_desc']], params[:sort_by] || 'recent'), onchange: 'this.form.submit()' %>
-  <%#= submit_tag "Sort" %>
+<%= form_with url: "/notes", method: :get, data: { controller: "actions", turbo_frame: 'notes-frame' } do |f| %>
+  <%= select_tag :sort_by, options_for_select([['Date (Most Recent)', 'recent'], ['Date (Most Oldest)', 'oldest'],['Title (A-Z)', 'title_asc'], ['Title (Z-A)', 'title_desc']], params[:sort_by] || 'recent'), data: { action: 'change->actions#submit' } %>
 <% end %>
 
-<ul>
-  <% @notes.each do |note| %>
-    <li>
-      <%= link_to note.title, note %>
-      <%= note.created_at %>
-    </li>
-  <% end %>
-</ul>
+
+<turbo-frame id="notes-frame">
+  <ul>
+    <% @notes.each do |note| %>
+      <li>
+        <%= link_to note.title, note %>
+        <%= note.created_at %>
+      </li>
+    <% end %>
+  </ul>
+</turbo-frame>
 
 <%= link_to "New Note", new_note_path %>
