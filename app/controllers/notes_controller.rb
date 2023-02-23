@@ -17,6 +17,10 @@ class NotesController < ApplicationController
     else
       @notes = @notes.order(created_at: :desc)
     end
+
+    if params[:topic_id].present?
+      @notes = @notes.where(topic_id: params[:topic_id])
+    end
     
   end
 
