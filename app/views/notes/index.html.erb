@@ -11,9 +11,10 @@
   <ul>
     <% @notes.each do |note| %>
       <li>
-        <%= link_to note.title, note %>
-        <%= note.created_at %>
-        <%= Topic.find(note.topic_id).name %>
+        <p><%= link_to note.title, note %></p>
+        <p><%= note.body %></p>
+        <p><%= note.created_at %></p>
+        <p><%= Topic.find(note.topic_id).name %></p>
       </li>
     <% end %>
   </ul>
