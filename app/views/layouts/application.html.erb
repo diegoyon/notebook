@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Notebook</title>
+    <title>MyNotebook</title>
+    <%= favicon_link_tag asset_path('logo-sm.png') %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,6 +15,11 @@
   </head>
 
   <body>
+    <nav class="navbar bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">MyNotebook</a>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
