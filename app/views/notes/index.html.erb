@@ -1,11 +1,13 @@
 
 <div class="container-fluid mt-5 pt-5">
-  <div class="container d-flex align-items-center">
-    <h1>Notes</h1>
-    <i class="bi bi-caret-right-fill"></i>
-  </div>
   <%= form_with url: "/notes", method: :get, data: { controller: "actions", turbo_frame: 'notes-frame' } do |form| %>
-    <%= form.text_field :query, data: { action: 'input->actions#submit' } %>
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="container d-flex align-items-center">
+        <h1>Notes</h1>
+        <i class="bi bi-caret-right-fill"></i>
+      </div>
+      <%= form.text_field :query, data: { action: 'input->actions#submit' }, class: "form-control me-2", type: "search", placeholder: "Start typing to search..." %>
+    </div>
     <%= select_tag :sort_by, options_for_select([['Date (Most Recent)', 'recent'], ['Date (Most Oldest)', 'oldest'],['Title (A-Z)', 'title_asc'], ['Title (Z-A)', 'title_desc']], params[:sort_by] || 'recent'), data: { action: 'change->actions#submit' } %>
     <%= form.collection_select(:topic_id, Topic.all, :id, :name_with_icon, {prompt: "All Topics"}, data: { action: 'input->actions#submit' } ) %>
   <% end %>
