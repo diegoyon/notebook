@@ -19,3 +19,14 @@
   font-size: 1.5rem;
   color: #56d676;
 }
+
+.btn-success {
+  background-color: #56d676 !important;
+  color: black !important;
+  border: 1px solid #56d676 !important;
+}
+
+.btn-success:hover {
+  background-color: white !important;
+  color: #56d676 !important;
+}
