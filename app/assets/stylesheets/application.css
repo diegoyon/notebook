@@ -12,4 +12,10 @@
  *
  *= require_tree .
  *= require_self
+
  */
+
+.bi-caret-right-fill {
+  font-size: 1.5rem;
+  color: #56d676;
+}
