@@ -10,50 +10,11 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
+ *= require_tree .
 
  */
 
 :root {
   --primary-color: #56d676;
-}
-
-.bi-caret-right-fill {
-  font-size: 1.5rem;
-  color: var(--primary-color);
-}
-
-.btn-success {
-  background-color: var(--primary-color);
-  color: black;
-  border: 1px solid var(--primary-color);
-}
-
-.btn-success:hover {
-  background-color: white;
-  color: var(--primary-color);
-}
-
-.form-control:focus,
-.form-control:active {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 0.25rem rgb(86 214 118 / 25%);
-}
-
-.form-select {
-  display: inline-block;
-  width: fit-content;
-  cursor: pointer;
-}
-
-.form-select:focus,
-.form-select:active {
-  box-shadow: none;
-  border-color: var(--primary-color);
-}
-
-.form-select:hover {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 0.25rem rgb(86 214 118 / 25%);
 }
