@@ -3,17 +3,6 @@
   color: var(--primary-color);
 }
 
-.btn-success {
-  background-color: var(--primary-color);
-  color: black;
-  border: 1px solid var(--primary-color);
-}
-
-.btn-success:hover {
-  background-color: white;
-  color: var(--primary-color);
-}
-
 .form-control:focus,
 .form-control:active {
   border-color: var(--primary-color);

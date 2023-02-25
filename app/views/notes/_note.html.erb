@@ -1,0 +1,10 @@
+<div class="card">
+  <div class="card-body d-flex flex-column">
+    <h5 class="card-title"><%= note.title %></h5>
+    <p class="card-text mb-auto"><%= note.body %></p>
+    <div class="card-date d-flex justify-content-between">
+      <p class="text-secondary"><%= note.created_at.strftime("%d-%m-%y") %></p>
+      <p><%= Topic.find(note.topic_id).icon %></p>
+    </div>
+  </div>
+</div>

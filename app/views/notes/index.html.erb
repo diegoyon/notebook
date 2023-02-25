@@ -9,24 +9,14 @@
       <%= form.text_field :query, data: { action: 'input->actions#submit' }, class: "form-control me-2", type: "search", placeholder: "Start typing to search..." %>
     </div>
     <div class="container my-2">
-      <%= select_tag :sort_by, options_for_select([['Date (Most Recent)', 'recent'], ['Date (Most Oldest)', 'oldest'],['Title (A-Z)', 'title_asc'], ['Title (Z-A)', 'title_desc']], params[:sort_by] || 'recent'), data: { action: 'change->actions#submit' }, class: "form-select" %>
+      <%= select_tag :sort_by, options_for_select([['Date (Newest)', 'newest'], ['Date (Oldest)', 'oldest'],['Title (A-Z)', 'title_asc'], ['Title (Z-A)', 'title_desc']], params[:sort_by] || 'newest'), data: { action: 'change->actions#submit' }, class: "form-select" %>
       <%= form.collection_select(:topic_id, Topic.all, :id, :name_with_icon, {prompt: "All Topics"}, data: { action: 'input->actions#submit' }, class: "form-select" )  %>
     </div>
   <% end %>
 
-  <div class="container">
-    <turbo-frame id="notes-frame">
-      <ul>
-        <% @notes.each do |note| %>
-          <li>
-            <p><%= link_to note.title, note %></p>
-            <p><%= note.body %></p>
-            <p><%= note.created_at %></p>
-            <p><%= Topic.find(note.topic_id).name %></p>
-          </li>
-        <% end %>
-      </ul>
-    </turbo-frame>
-  </div>
-  <%= link_to "New Note", new_note_path %>
+  <turbo-frame id="notes-frame">
+    <div class="container d-flex flex-wrap gap-4 my-4">
+      <%= render @notes %>
+    </div>
+  </turbo-frame>
 </div>
