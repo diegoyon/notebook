@@ -15,41 +15,45 @@
 
  */
 
+:root {
+  --primary-color: #56d676;
+}
+
 .bi-caret-right-fill {
   font-size: 1.5rem;
-  color: #56d676;
+  color: var(--primary-color);
 }
 
 .btn-success {
-  background-color: #56d676 !important;
-  color: black !important;
-  border: 1px solid #56d676 !important;
+  background-color: var(--primary-color);
+  color: black;
+  border: 1px solid var(--primary-color);
 }
 
 .btn-success:hover {
-  background-color: white !important;
-  color: #56d676 !important;
+  background-color: white;
+  color: var(--primary-color);
 }
 
 .form-control:focus,
 .form-control:active {
-  border-color: #56d676 !important;
-  box-shadow: 0 0 0 0.25rem rgb(86 214 118 / 25%) !important;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgb(86 214 118 / 25%);
 }
 
 .form-select {
-  display: inline-block !important;
-  width: fit-content !important;
+  display: inline-block;
+  width: fit-content;
   cursor: pointer;
 }
 
 .form-select:focus,
 .form-select:active {
-  box-shadow: none !important;
-  border-color: #56d676 !important;
+  box-shadow: none;
+  border-color: var(--primary-color);
 }
 
 .form-select:hover {
-  border-color: #56d676 !important;
-  box-shadow: 0 0 0 0.25rem rgb(86 214 118 / 25%) !important;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgb(86 214 118 / 25%);
 }
