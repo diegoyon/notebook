@@ -6,4 +6,4 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Topic.create!([{name: 'Music', icon: '🎶' }, {name: 'Sports', icon: '🏈'}, {name: 'Travel', icon: '🌎'}, {name: 'Studies', icon: '📚'}, {name: 'Food', icon: '🍕'}])
+Topic.create!([{name: 'Music', icon: '🎶' }, {name: 'Sports', icon: '🏈'}, {name: 'Travel', icon: '🌎'}, {name: 'Studies', icon: '📚'}, {name: 'Food', icon: '🍕'}, {name: 'Cars', icon: '🚘'}, {name: 'Movies', icon: '🎞️'}, {name: 'Personal', icon: '✍🏽'}, {name: 'Games', icon: '🎲'}])

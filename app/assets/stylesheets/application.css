@@ -18,3 +18,10 @@
 :root {
   --primary-color: #56d676;
 }
+
+a,
+a:visited,
+a:hover {
+  text-decoration: none;
+  color: black;
+}
