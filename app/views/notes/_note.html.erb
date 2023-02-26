@@ -1,12 +1,12 @@
 <%= link_to note do %>
-<div class="card">
-  <div class="card-body d-flex flex-column">
-    <h5 class="card-title"><%= note.title %></h5>
-    <p class="card-text"><%= note.body %></p>
-    <div class="card-date mt-auto d-flex justify-content-between">
-      <p class="text-secondary"><%= note.created_at.strftime("%d-%m-%y") %></p>
-      <p><%= Topic.find(note.topic_id).icon %></p>
+  <div class="card">
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title"><%= note.title %></h5>
+      <p class="card-text"><%= note.body %></p>
+      <div class="card-date mt-auto d-flex justify-content-between">
+        <p class="text-secondary"><%= note.created_at.strftime("%d-%m-%y") %></p>
+        <p><%= Topic.find(note.topic_id).icon %></p>
+      </div>
     </div>
   </div>
-</div>
 <% end %>

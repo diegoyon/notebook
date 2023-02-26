@@ -1,11 +1,17 @@
-<h1><%= @note.title %></h1>
+<div class="container d-flex flex-column mt-5 pt-5">
+  <div class="details text-end">
+    <p class="m-0">Created: <%= @note.created_at.strftime("%l:%M%p %d-%m-%y") %></p>
+    <p class="m-0">Last edited: <%= @note.updated_at.strftime("%l:%M%p %d-%m-%y") %></p>
+    <p class="m-0">Topic: <%= Topic.find(@note.topic_id).name %></p>
+  </div>
+  <h1 class="mt-5"><%= @note.title %></h1>
 
-<p><%= @note.body %></p>
+  <p class="mb-5"><%= @note.body %></p>
 
-<p><%= Topic.find(@note.topic_id).name %></p>
 
-<p><%= @note.created_at %></p>
+  <div class="actions">
+    <%= link_to "Edit Note", edit_note_path(@note), class: "btn btn-secondary" %>
+    <%= link_to "Delete", note_path(@note), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger" %>
+  </div>
 
-<%= link_to "Edit Note", edit_note_path(@note) %>
-<%= link_to "Back to notes", root_path %>
-<%= link_to "Delete", note_path(@note), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+</div>
