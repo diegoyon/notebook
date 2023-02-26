@@ -33,6 +33,13 @@
   justify-content: space-between;
 }
 
+.notes-grid a,
+.notes-grid a:visited,
+.notes-grid a:hover {
+  text-decoration: none;
+  color: black;
+}
+
 .card {
   width: 12rem;
   height: 17rem;
