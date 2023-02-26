@@ -6,7 +6,7 @@
         <h1>Notes</h1>
         <i class="bi bi-caret-right-fill"></i>
       </div>
-      <%= form.text_field :query, data: { action: 'input->actions#submit' }, class: "form-control me-2", type: "search", placeholder: "Start typing to search..." %>
+      <%= form.text_field :query, data: { action: 'input->actions#submit' }, class: "form-control", type: "search", placeholder: "Start typing to search..." %>
     </div>
     <div class="container my-2">
       <%= select_tag :sort_by, options_for_select([['Date (Newest)', 'newest'], ['Date (Oldest)', 'oldest'],['Title (A-Z)', 'title_asc'], ['Title (Z-A)', 'title_desc']], params[:sort_by] || 'newest'), data: { action: 'change->actions#submit' }, class: "form-select" %>
@@ -15,8 +15,8 @@
   <% end %>
 
   <turbo-frame id="notes-frame">
-    <div class="container d-flex flex-wrap gap-4 my-4">
-      <%= render @notes %>
+    <div class="container my-4 notes-grid">
+        <%= render @notes %>
     </div>
   </turbo-frame>
 </div>
