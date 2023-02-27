@@ -5,7 +5,7 @@
       <%= image_tag "logo-md.png", alt: 'Logo', height: '24', width: '24', class: "d-inline-block align-text-top" %>
       MyNotebook
     <% end %>
-    <% if current_page?('/') || current_page?('/notes')  %>
+    <% if current_page?(root_path) || current_page?(notes_path)  %>
       <%= link_to "New Note", new_note_path, class: "btn btn-success"%>
     <% end %>
   </div>
