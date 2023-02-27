@@ -10,7 +10,6 @@
   <% end %>
 
   <div>
-    <%= form.label :topic_id %>
     <%= form.collection_select(:topic_id, Topic.all, :id, :name_with_icon, {prompt: 'Select Topic'}, class: 'form-select') %>
   </div>
 
