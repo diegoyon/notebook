@@ -1,23 +1,21 @@
-<h1>Notes</h1>
+<div class="container-fluid mt-5 pt-5">
+  <%= form_with url: "/notes", method: :get, data: { controller: "actions", turbo_frame: 'notes-frame' } do |form| %>
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="container d-flex align-items-center">
+        <h1>Notes</h1>
+        <i class="bi bi-caret-right-fill"></i>
+      </div>
+      <%= form.text_field :query, data: { action: 'input->actions#submit' }, class: "form-control", type: "search", placeholder: "Start typing to search..." %>
+    </div>
+    <div class="container my-2">
+      <%= select_tag :sort_by, options_for_select([['Date (Newest)', 'newest'], ['Date (Oldest)', 'oldest'],['Title (A-Z)', 'title_asc'], ['Title (Z-A)', 'title_desc']], params[:sort_by] || 'newest'), data: { action: 'change->actions#submit' }, class: "form-select" %>
+      <%= form.collection_select(:topic_id, Topic.all, :id, :name_with_icon, {prompt: "All Topics"}, data: { action: 'input->actions#submit' }, class: "form-select" )  %>
+    </div>
+  <% end %>
 
-<%= form_with url: "/notes", method: :get, data: { controller: "actions", turbo_frame: 'notes-frame' } do |form| %>
-  <%= form.text_field :query, data: { action: 'input->actions#submit' } %>
-  <%= select_tag :sort_by, options_for_select([['Date (Most Recent)', 'recent'], ['Date (Most Oldest)', 'oldest'],['Title (A-Z)', 'title_asc'], ['Title (Z-A)', 'title_desc']], params[:sort_by] || 'recent'), data: { action: 'change->actions#submit' } %>
-  <%= form.collection_select(:topic_id, Topic.all, :id, :name_with_icon, {prompt: "All Topics"}, data: { action: 'input->actions#submit' } ) %>
-<% end %>
-
-
-<turbo-frame id="notes-frame">
-  <ul>
-    <% @notes.each do |note| %>
-      <li>
-        <p><%= link_to note.title, note %></p>
-        <p><%= note.body %></p>
-        <p><%= note.created_at %></p>
-        <p><%= Topic.find(note.topic_id).name %></p>
-      </li>
-    <% end %>
-  </ul>
-</turbo-frame>
-
-<%= link_to "New Note", new_note_path %>
+  <turbo-frame id="notes-frame" target="_top">
+    <div class="container my-4 notes-grid">
+        <%= render @notes %>
+    </div>
+  </turbo-frame>
+</div>

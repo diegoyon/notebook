@@ -1,5 +1,11 @@
-<h1>Edit Note</h1>
+<div class="container mt-5 pt-5">
 
-<%= render "form", note: @note %>
+  <%= link_to note_path(@note), class: 'mb-5 text-decoration-none' do %>
+    <i class="bi bi-arrow-left-circle-fill">Back</i>
+  <% end %>
 
-<%= link_to "Back to note", note_path(@note) %>
+  <h1 class="mt-5">Edit Note</h1>
+
+  <%= render "form", note: @note %>
+
+</div>

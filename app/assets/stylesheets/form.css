@@ -1,0 +1,8 @@
+textarea {
+  height: 20rem;
+  resize: none;
+}
+
+#error_explanation {
+  color: red;
+}

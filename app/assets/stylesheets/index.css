@@ -1,0 +1,67 @@
+.bi-caret-right-fill {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.form-control:focus,
+.form-control:active {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgb(86 214 118 / 25%);
+}
+
+.form-select {
+  display: inline-block;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.form-select:focus,
+.form-select:active {
+  box-shadow: none;
+  border-color: var(--primary-color);
+}
+
+.form-select:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgb(86 214 118 / 25%);
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 12rem);
+  grid-gap: 1rem;
+  justify-content: space-between;
+}
+
+.notes-grid a,
+.notes-grid a:visited,
+.notes-grid a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.card {
+  width: 12rem;
+  height: 17rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-text {
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+}
+
+.card-date p {
+  margin: 0;
+}

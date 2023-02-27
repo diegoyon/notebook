@@ -53,7 +53,7 @@ class NotesController < ApplicationController
   def sort_notes
     if params[:sort_by].present?
       case params[:sort_by]
-      when 'recent'
+      when 'newest'
         @notes = @notes.order(created_at: :desc)
       when 'oldest'
         @notes = @notes.order(created_at: :asc)
