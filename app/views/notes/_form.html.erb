@@ -1,8 +1,6 @@
 <%= form_with model: note, class: 'mb-5' do |form| %>
    <% if note.errors.any? %>
-    <div id="error_explanation" style="color: red">
-      <h2><%= pluralize(note.errors.count, "error") %> prohibited this note from being saved:</h2>
-
+    <div id="error_explanation">
       <ul>
       <% note.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -13,17 +11,15 @@
 
   <div>
     <%= form.label :topic_id %>
-    <%= form.collection_select(:topic_id, Topic.all, :id, :name_with_icon,{}, class: 'form-select') %>
+    <%= form.collection_select(:topic_id, Topic.all, :id, :name_with_icon, {prompt: 'Select Topic'}, class: 'form-select') %>
   </div>
 
-  <div>
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "form-control" %>
+  <div class="my-3">
+    <%= form.text_field :title, class: "form-control", placeholder: "Title" %>
   </div>
 
-  <div>
-    <%= form.label :body %>
-    <%= form.text_area :body, class: "form-control" %>
+  <div class="my-3">
+    <%= form.text_area :body, class: "form-control", placeholder: "Start writing something great..." %>
   </div>
 
   <div>
