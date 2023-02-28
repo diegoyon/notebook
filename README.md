@@ -1,6 +1,6 @@
 # Notebook
 
-> A rails app where users can create, read, update, and delete notes. Notes are created with a title, and a body, and associated with a topic. Users can filter the notes by topic, title, or date. The app has a search input where the user can type to instant search for a note by title or body.
+> A rails app where users can create, read, update, and delete notes. Notes are created with a title, and a body, and associated with a topic. Users can filter the notes by topic, title, or date. The app has a searchbar where the user can type to instant search for a note by title or body.
 
 ## Built With
 
